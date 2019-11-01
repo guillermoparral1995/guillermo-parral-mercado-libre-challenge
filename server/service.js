@@ -6,8 +6,8 @@ exports.getItemsList = (query) => {
             name: 'Guillermo',
             lastname: 'Parral'
         };
-        const categories = response.filters.values ?
-            response.filters.values[0].path_from_root.map((elem) => elem.name) : [];
+        const categories = response.filters.length && response.filters[0].values ?
+            response.filters[0].values[0].path_from_root.map((elem) => elem.name) : [];
         const items = response.results.map((item) => {
             const [amount, decimals] = item.price.toString().split('.');
             return {

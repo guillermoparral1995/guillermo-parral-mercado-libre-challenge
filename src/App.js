@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.scss';
+import {SearchBox} from "./SearchBox/SearchBox";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [results, setResults] = useState([]);
+
+    const getResults = (query) => {
+        fetch(`http://localhost:8080/api/items?q=${query}`)
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                setResults(response.items)
+            });
+    };
+
+    return (
+        <div className="App">
+            <SearchBox onSubmit={(query) => getResults(query)}/>
+        </div>
+    );
 }
 
 export default App;

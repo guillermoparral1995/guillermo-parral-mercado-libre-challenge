@@ -7,11 +7,13 @@ const app = express();
 app.use(cors());
 
 app.get('/api/items', (req, res) => {
-    service.getItemsList(req.query.q).then(items => res.json(items));
+    service.getItemsList(req.query.q)
+        .then(items => res.json(items))
 });
 
 app.get('/api/items/:id', (req, res) => {
-    service.getItemDetail(req.params.id).then(item => res.json(item));
+    service.getItemDetail(req.params.id)
+        .then(item => res.json(item))
 });
 
 app.listen(8080, () => {

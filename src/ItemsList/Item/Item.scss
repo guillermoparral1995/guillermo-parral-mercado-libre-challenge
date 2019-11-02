@@ -1,0 +1,54 @@
+.item-container{
+  padding: 10px;
+  background-color: white;
+
+  &:not(last-child){
+    border-bottom: solid 1px #cccccc;
+  }
+
+  img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.item-info{
+  display: flex;
+}
+
+.item-general-info{
+  flex: 9;
+  margin-left: 10px;
+}
+
+.item-location{
+  flex: 1;
+}
+
+.item-price{
+  display: inline-block;
+  font-size: 22px;
+}
+
+.item-price-decimals{
+  font-size: 12px;
+  position: relative;
+  bottom: 7px;
+}
+
+.item-price-free-shipping{
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background: no-repeat url("../../shipping.svg") #4BB543;
+}
+
+.item-location{
+  p{
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    position: relative;
+  }
+}
+

@@ -21,6 +21,11 @@
   margin-left: 10px;
 }
 
+.item-title{
+  text-decoration: none;
+  color: initial;
+}
+
 .item-location{
   flex: 1;
 }
@@ -38,9 +43,13 @@
 
 .item-price-free-shipping{
   border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  left: 5px;
+  top: 2px;
   width: 20px;
   height: 20px;
-  background: no-repeat url("../../shipping.svg") #4BB543;
+  background: no-repeat url("../../shipping.svg") limegreen;
 }
 
 .item-location{

@@ -19,7 +19,7 @@ export function SearchBox(props) {
             </Link>
             <input className="search-box-input" type="text" placeholder="Nunca dejes de buscar"
                    onKeyUp={(e) => setSearchValue(e.target.value)}/>
-            <button type="submit" className="search-box-btn" />
+            <button type="submit" className="search-box-btn" data-testid="search-box-icon"/>
         </form>
     </div>;
 

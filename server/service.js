@@ -1,6 +1,5 @@
 const client = require('./client');
 
-
 exports.getItemsList = (query) => {
     return client.search(query).then((response => {
         const author = {

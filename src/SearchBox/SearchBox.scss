@@ -1,8 +1,12 @@
 .search-box-container{
-  background-color: #fff159;
-  text-align: center;
-  padding: 10px 200px;
   display: flex;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.background-banner{
+  background-color: #fff159;
+  padding: 10px 0;
 }
 
 .search-box-input{

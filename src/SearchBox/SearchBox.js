@@ -11,10 +11,13 @@ export function SearchBox(props) {
         props.onSubmit(searchValue);
     };
 
-    return <form className="search-box-container" onSubmit={(event) => handleSubmit(event)}>
+    return <div className="background-banner">
+        <form className="search-box-container" onSubmit={(event) => handleSubmit(event)}>
             <img src={logo} alt="Logo Mercado Libre" />
             <input className="search-box-input" type="text" placeholder="Nunca dejes de buscar"
                    onKeyUp={(e) => setSearchValue(e.target.value)}/>
             <button type="submit" className="search-box-btn" />
-        </form>;
+        </form>
+    </div>;
+
 }

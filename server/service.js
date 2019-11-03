@@ -1,5 +1,11 @@
 const client = require('./client');
 
+const sanitizeResponse = (response) => {
+    if(response.error){
+        throw response;
+    }
+};
+
 exports.getItemsList = (query) => {
     return client.search(query).then((response => {
         const author = {
@@ -28,11 +34,15 @@ exports.getItemsList = (query) => {
             categories,
             items
         }
-    })).catch(error => console.error(error));
+    }))
 };
 
 exports.getItemDetail = (query) => {
     return client.getItemData(query)
+        .then(responses => {
+            responses.forEach(resp => sanitizeResponse(resp));
+            return responses;
+        })
         .then(responses => {
             const [item, description] = responses;
             const [amount, decimals] = item.price.toString().split('.');
@@ -56,9 +66,5 @@ exports.getItemDetail = (query) => {
                     description: description.plain_text
                 }
             }
-        })
-        .catch(error => {
-            console.log('There was an error!!!');
-            console.error(error);
         })
 };

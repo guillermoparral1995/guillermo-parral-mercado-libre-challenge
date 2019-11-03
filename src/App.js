@@ -4,6 +4,7 @@ import {SearchBox} from "./SearchBox/SearchBox";
 import {Switch, Route, useHistory} from 'react-router-dom';
 import ItemsList from "./ItemsList/ItemsList";
 import ItemDetail from "./ItemDetail/ItemDetail";
+import Message from "./Message/Message";
 
 function App() {
     let history = useHistory();
@@ -24,7 +25,9 @@ function App() {
             <Switch>
                 <Route exact path="/items">
                     {
-                        results.items.length ? <ItemsList categories={results.categories} items={results.items}/> : null
+                        results.items.length ?
+                            <ItemsList categories={results.categories} items={results.items}/>
+                            : <Message error={false} message={'No encontramos resultados con lo que ingresaste. Probá buscandolo con otras palabras!'} />
                     }
                 </Route>
                 <Route path="/items/:id" component={ItemDetail} />

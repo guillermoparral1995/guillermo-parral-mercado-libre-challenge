@@ -14,6 +14,7 @@ app.get('/api/items', (req, res) => {
 app.get('/api/items/:id', (req, res) => {
     service.getItemDetail(req.params.id)
         .then(item => res.json(item))
+        .catch(error => res.status(error.status).send(error));
 });
 
 app.listen(8080, () => {

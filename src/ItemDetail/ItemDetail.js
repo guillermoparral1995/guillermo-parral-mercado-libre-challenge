@@ -1,22 +1,34 @@
 import React, {useState, useEffect} from 'react';
 import './ItemDetail.scss';
 import * as utils from '../utils';
+import Message from "../Message/Message";
 
 export default function ItemDetail(props) {
 
     const id = props.match.params.id;
     const [itemInfo, setItemInfo] = useState({});
+    const [errorMsg, showErrorMsg] = useState({error: false, text: ''});
 
     useEffect(() => {
         fetch(`http://localhost:8080/api/items/${id}`)
             .then(response => response.json())
             .then(response => {
-                console.log(response.item);
-                setItemInfo(response.item);
+                if(response.error){
+                    let text;
+                    switch(response.status){
+                        case 404: text = 'El artículo que ingresaste no existe.'; break;
+                        case 500: text = 'No pudimos encontrar el artículo que estabas buscando. Probá nuevamente más tarde'; break;
+                        default: text = 'Ups! Algo salió mal. Probá nuevamente más tarde'; break;
+                    }
+                    showErrorMsg({error: true, title: 'Lo sentimos!', text: text});
+                } else {
+                    setItemInfo(response.item);
+                }
             });
     }, [id]);
 
-    return itemInfo.id ? <div className={'item-detail-container'}>
+    return errorMsg.error ? <Message error={errorMsg.error} message={errorMsg.text} /> :
+        itemInfo.id ? <div className={'item-detail-container'}>
         <div className={'item-detail-first-row'}>
             <div className={'item-detail-img-container'}>
                 <img src={itemInfo.picture} alt={itemInfo.title}/>
@@ -38,5 +50,5 @@ export default function ItemDetail(props) {
             <p className={'item-detail-description-title'}>Descripción del producto</p>
             <p className={'item-detail-description-text'}>{itemInfo.description}</p>
         </div>
-    </div> : ''
-}
+    </div> : null
+};

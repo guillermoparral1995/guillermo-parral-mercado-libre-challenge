@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import './App.scss';
 import {SearchBox} from "./SearchBox/SearchBox";
-import {Switch, Route, useHistory} from 'react-router-dom';
+import {Switch, Route, Redirect, useHistory} from 'react-router-dom';
 import ItemsList from "./ItemsList/ItemsList";
 import ItemDetail from "./ItemDetail/ItemDetail";
 import Message from "./Message/Message";
 
 function App() {
     let history = useHistory();
-    const [results, setResults] = useState({author: {}, categories: [], items: []});
+    const [results, setResults] = useState({});
 
     const getResults = (query) => {
         fetch(`http://localhost:8080/api/items?q=${query}`)
@@ -25,9 +25,11 @@ function App() {
             <Switch>
                 <Route exact path="/items">
                     {
-                        results.items.length ?
+                        results.items ? results.items.length ?
                             <ItemsList categories={results.categories} items={results.items}/>
-                            : <Message error={false} message={'No encontramos resultados con lo que ingresaste. Probá buscandolo con otras palabras!'} />
+                            : <Message error={false}
+                                       message={'No encontramos resultados con lo que ingresaste. Probá buscandolo con otras palabras!'} />
+                            : <Redirect to={"/"}/>
                     }
                 </Route>
                 <Route path="/items/:id" component={ItemDetail} />

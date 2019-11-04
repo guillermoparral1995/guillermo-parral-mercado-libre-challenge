@@ -14,8 +14,13 @@ function App() {
         fetch(`http://localhost:8080/api/items?q=${query}`)
             .then(response => response.json())
             .then(response => {
-                setResults(response);
-                history.push(`/items?search=${query}`);
+                if (response.error) {
+                    console.error(response);
+                    setResults({error: response});
+                } else {
+                    setResults(response);
+                    history.push(`/items?search=${query}`);
+                }
             });
     };
 
@@ -25,10 +30,13 @@ function App() {
             <Switch>
                 <Route exact path="/items">
                     {
-                        results.items ? results.items.length ?
+                        results.error ?
+                            <Message error={true}
+                                     message={'Hubo un problema buscando ese producto. Probá nuevamente más tarde.'}/>
+                            : results.items ? results.items.length ?
                             <ItemsList categories={results.categories} items={results.items}/>
                             : <Message error={false}
-                                       message={'No encontramos resultados con lo que ingresaste. Probá buscandolo con otras palabras!'} />
+                                       message={'No encontramos resultados con lo que ingresaste. Probá buscandolo con otras palabras!'}/>
                             : <Redirect to={"/"}/>
                     }
                 </Route>

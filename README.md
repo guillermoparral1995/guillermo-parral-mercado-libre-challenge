@@ -22,7 +22,7 @@ Esto levanta en simultáneo el cliente y el server en dos puertos distintos para
 
 Para correr los tests, ejecutar:
 ```
-npm test
+npm run test
 ```
 
 ## Client-side ##

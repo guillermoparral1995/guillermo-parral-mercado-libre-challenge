@@ -3,6 +3,7 @@ import './ItemDetail.scss';
 import * as utils from '../utils';
 import Message from "../Message/Message";
 import Breadcrumb from "../Breadcrumb/Breadcrumb";
+import Loader from "../Loader/Loader";
 
 export default function ItemDetail(props) {
 
@@ -27,11 +28,15 @@ export default function ItemDetail(props) {
                             text = 'Ups! Algo salió mal. Probá nuevamente más tarde';
                             break;
                     }
-                    showErrorMsg({error: true, title: 'Lo sentimos!', text: text});
+                    showErrorMsg({error: true, text: text});
                 } else {
                     setItemInfo(response.item);
                 }
-            });
+            })
+            .catch(error => {
+                console.error(error);
+                showErrorMsg({error: true, text: 'Ups! Algo salió mal. Probá nuevamente más tarde'});
+            });;
     }, [id]);
 
     return errorMsg.error ? <Message error={errorMsg.error} message={errorMsg.text}/> :
@@ -61,5 +66,5 @@ export default function ItemDetail(props) {
                     </div>
                 </div>
             </div>
-            : null
+            : <Loader />
 };

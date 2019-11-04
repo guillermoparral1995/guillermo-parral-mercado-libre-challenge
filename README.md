@@ -46,8 +46,8 @@ cuando se produjo un error o cuando no hubo resultados para la búsqueda realiza
 productos muestran la ubicación del vendedor, pero en el detalle de la API que debía construir no figuraba ese dato.
 Me tomé la libertad de reemplazarlo con la condición del producto. Además, en la vista de detalle de producto decía que
 debía mostrar el breadcrumb de la categoría del producto, pero se daba la misma situación: la API que debía construir
-y consumir desde el lado del cliente no tenía info de categoría como para armar el breadcrumb. Voy a subir en otro branch
-una versión alternativa donde consuma otros servicios de la API de Mercado Libre para obtener esa info.
+y consumir desde el lado del cliente no tenía info de categoría como para armar el breadcrumb. Dejo en el branch `alternative`
+una versión alternativa donde consumo otros servicios de la API de Mercado Libre para obtener esa info.
 
 ## Server-side ##
 

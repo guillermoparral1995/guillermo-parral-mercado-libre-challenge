@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './ItemDetail.scss';
 import * as utils from '../utils';
 import Message from "../Message/Message";
+import Loader from "../Loader/Loader";
 
 export default function ItemDetail(props) {
 
@@ -20,11 +21,15 @@ export default function ItemDetail(props) {
                         case 500: text = 'No pudimos encontrar el artículo que estabas buscando. Probá nuevamente más tarde'; break;
                         default: text = 'Ups! Algo salió mal. Probá nuevamente más tarde'; break;
                     }
-                    showErrorMsg({error: true, title: 'Lo sentimos!', text: text});
+                    showErrorMsg({error: true, text: text});
                 } else {
                     setItemInfo(response.item);
                 }
-            });
+            })
+            .catch(error => {
+                console.error(error);
+                showErrorMsg({error: true, text: 'Ups! Algo salió mal. Probá nuevamente más tarde'});
+            });;
     }, [id]);
 
     return errorMsg.error ? <Message error={errorMsg.error} message={errorMsg.text} /> :
@@ -50,5 +55,5 @@ export default function ItemDetail(props) {
             <p className={'item-detail-description-title'}>Descripción del producto</p>
             <p className={'item-detail-description-text'}>{itemInfo.description}</p>
         </div>
-    </div> : null
+    </div> : <Loader />
 };

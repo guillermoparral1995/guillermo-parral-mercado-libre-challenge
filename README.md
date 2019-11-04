@@ -42,7 +42,7 @@ Si bien no estaba especificado en la consigna del challenge, me pareció oportun
 cuando se produjo un error o cuando no hubo resultados para la búsqueda realizada. Esto se puede visualizar en el componente
 `Message`.
 
-** DISCLAIMER: ** En los mockups presentados en la consigna, en la vista de listado de productos se ve que los 
+**DISCLAIMER:** En los mockups presentados en la consigna, en la vista de listado de productos se ve que los 
 productos muestran la ubicación del vendedor, pero en el detalle de la API que debía construir no figuraba ese dato.
 Me tomé la libertad de reemplazarlo con la condición del producto. Además, en la vista de detalle de producto decía que
 debía mostrar el breadcrumb de la categoría del producto, pero se daba la misma situación: la API que debía construir

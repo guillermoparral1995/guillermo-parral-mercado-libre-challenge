@@ -17,10 +17,10 @@
     margin-right: 10px;
     width: 24px;
     height: 24px;
-    background: no-repeat transparent url('../danger.png');
+    background: no-repeat transparent url('../assets/danger.png');
 
     &.error{
-      background: no-repeat transparent url('../cancel.png');
+      background: no-repeat transparent url('../assets/cancel.png');
     }
   }
 

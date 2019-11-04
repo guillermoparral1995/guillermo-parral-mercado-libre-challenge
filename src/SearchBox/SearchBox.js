@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import './SearchBox.scss';
-import logo from '../meli-logo.png';
+import logo from '../assets/meli-logo.png';
 
 export function SearchBox(props) {
 

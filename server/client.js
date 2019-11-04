@@ -19,6 +19,13 @@ exports.search = (query) => {
 };
 
 exports.getItemData = (query) => {
-    return Promise.all([requestPromise(`https://api.mercadolibre.com/items/${query}`),
-        requestPromise(`https://api.mercadolibre.com/items/${query}/description`)]);
+    return requestPromise(`https://api.mercadolibre.com/items/${query}`)
+        .then((item) => {
+            return Promise.all([
+                requestPromise(`https://api.mercadolibre.com/items/${query}/description`),
+                requestPromise(`https://api.mercadolibre.com/categories/${item.category_id}`)
+            ]).then(responses => {
+                return {item: item, description: responses[0], categories: responses[1]};
+            })
+        })
 };

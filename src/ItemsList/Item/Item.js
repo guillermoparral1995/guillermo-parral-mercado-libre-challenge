@@ -18,7 +18,7 @@ export default function Item({info, categories}) {
                 </Link>
             </div>
             <div className={'item-location'}>
-                <p>{info.condition === 'new' ? 'Nuevo' : 'Usado'}</p>
+                <p>{info.location}</p>
             </div>
         </div>
 

@@ -24,6 +24,7 @@ exports.getItemsList = (query) => {
                     amount: parseInt(amount),
                     decimals: parseInt(decimals)
                 },
+                location: item.address.state_name,
                 picture: item.thumbnail,
                 condition: item.condition,
                 free_shipping: item.shipping.free_shipping
@@ -40,11 +41,11 @@ exports.getItemsList = (query) => {
 exports.getItemDetail = (query) => {
     return client.getItemData(query)
         .then(responses => {
-            responses.forEach(resp => sanitizeResponse(resp));
+            Object.values(responses).forEach(resp => sanitizeResponse(resp));
             return responses;
         })
         .then(responses => {
-            const [item, description] = responses;
+            const {item, description, categories} = responses;
             const [amount, decimals] = item.price.toString().split('.');
             return {
                 author: {
@@ -63,7 +64,8 @@ exports.getItemDetail = (query) => {
                     condition: item.condition,
                     free_shipping: item.shipping.free_shipping,
                     sold_quantity: item.sold_quantity,
-                    description: description.plain_text
+                    description: description.plain_text,
+                    categories: categories.path_from_root.map((elem) => elem.name)
                 }
             }
         })

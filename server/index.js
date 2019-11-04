@@ -12,6 +12,7 @@ app.get('/api/items', (req, res) => {
         .catch(error => res.status(500).send(error));
 });
 
+
 app.get('/api/items/:id', (req, res) => {
     service.getItemDetail(req.params.id)
         .then(item => res.json(item))

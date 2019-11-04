@@ -3,9 +3,9 @@
 ## Overview ##
 
 Este challenge está hecho con React para el lado del cliente y Node.js con Express para el lado del server. 
-Utilicé **Create React App** (https://github.com/facebook/create-react-app) para inicializar el template del proyecto 
+Utilicé `Create React App` (https://github.com/facebook/create-react-app) para inicializar el template del proyecto 
 del lado del cliente para facilitar configuración de Webpack y Jest que puede resultar tediosa. Además instalé la 
-dependencia **node-sass** (https://github.com/sass/node-sass) para poder utilizar Sass en vez de CSS para los estilos.
+dependencia `node-sass` (https://github.com/sass/node-sass) para poder utilizar Sass en vez de CSS para los estilos.
 
 ## Setup ##
 
@@ -27,7 +27,7 @@ npm test
 
 ## Client-side ##
 
-Está hecho con React, utilizando **React Router** (https://reacttraining.com/react-router/web/guides/quick-start) para 
+Está hecho con React, utilizando `React Router` (https://reacttraining.com/react-router/web/guides/quick-start) para 
 manejar todo lo que es routeo de la aplicación. 
 
 El state de la aplicación está concentrado en dos componentes: en `App` y en `ItemDetail`. 

@@ -10,6 +10,13 @@
     width: 150px;
     height: 150px;
   }
+
+  @media(max-width: 480px){
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
 }
 
 .item-info{
@@ -26,6 +33,12 @@
   color: initial;
 }
 
+@media(max-width: 480px){
+  .item-title p{
+    font-size: 14px;
+  }
+}
+
 .item-location{
   flex: 1;
 }
@@ -33,6 +46,12 @@
 .item-price{
   display: inline-block;
   font-size: 22px;
+}
+
+@media(max-width: 480px){
+  .item-price{
+    margin: 10px 0;
+  }
 }
 
 .item-price-decimals{

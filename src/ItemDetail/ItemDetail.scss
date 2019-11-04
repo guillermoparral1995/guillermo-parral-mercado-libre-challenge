@@ -49,6 +49,12 @@
   }
 }
 
+@media(max-width: 480px){
+  .item-detail-first-row{
+    flex-direction: column;
+  }
+}
+
 .item-detail-description-title{
   font-size: 20px;
 }
